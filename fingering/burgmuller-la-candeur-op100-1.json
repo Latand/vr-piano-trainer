@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "file": "burgmuller-la-candeur-op100-1.mid",
+  "notes": 241,
+  "check": "7eadd525",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "lllrrrrrrrrlllrrrrrrrrlllrrrrrrrrrrrrrrrrlllrrrrrrrrlllrrrrrrrrlllrrrrrrrrllrrrrrlrlrlrlrlrlrlrlrlrrllllllllrlrlrlrlrlrlrlrlrrllllllllrrrrllrrrrlllrrrrrrrrllrrrrllrrrrlrllllllrrrrrrrrlllrrrrlllrrrrlllrrrrrrrrlllrrrrlllrrrrlllrlllllrrrlllllrr",
+  "fingers": "5315321532152153215321531532121345321212352154325432531432143215313243543253123155533221155332211524432121255332211553322115244321212453214253215215412541251431251415455321553323123415215321521543253132123451521532152153215312532151245321412",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":3.947,"key":"B4","finger":2,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":4.145,"key":"C5","finger":1,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":5.526,"key":"B4","finger":2,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":5.724,"key":"C5","finger":1,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":12.632,"key":"F5","finger":5,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":12.632,"key":"G3","finger":5,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":17.368,"key":"C5","finger":2,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":17.368,"key":"E5","finger":4,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":21.316,"key":"F5","finger":5,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":22.895,"key":"C5","finger":4,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":23.092,"key":"B4","finger":1,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":23.684,"key":"C4","finger":5,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":25.658,"key":"C5","finger":3,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":26.842,"key":"F5","finger":5,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":28.421,"key":"C5","finger":3,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":28.816,"key":"C5","finger":1,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":30,"key":"F5","finger":5,"why":"the edition's printed fingering (Mutopia source)"}
+  ]
+}

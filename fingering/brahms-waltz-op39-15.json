@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "file": "brahms-waltz-op39-15.mid",
+  "notes": 720,
+  "check": "83883db2",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "lrrlllrrlllrrrrlrrlllrrlllrrrrlrrrrrlllrrrllrrrlrrrlllrlllrrrlrrrllllrrllrrrrlrrrllllrrllrrrrlrrrrlllrrrlllrrrlrrrlllrrllrrrlrrlllrrlllrrrrlrrlllrrlllrrrrlrrrrrlllrrrllrrrlrrrlllrlllrrrlrrrllllrrllrrrrlrrrllllrrllrrrrlrrrrlllrrrlllrrrlrrrlllrrrlllrrrrlrrrrrlllrrrllrrrrrlrrrrlllrrllrrrlrrrrrlllrrrllrrrrrlrrrrlllrrrllrrrrllrrrrrllllrrrlllrrrrlrrrrlllrrrlllrrrlrrlllrrlllrrrrlrrlllrrlllrrrrlrrrrrlllrrrllrrrlrrrlllrlllrrrlrrrllllrrllrrrrlrrrllllrrllrrrrlrrrlrrllrrrlrrrllrrrlllrrrrlrrrrrlllrrrllrrrrrlrrrrlllrrllrrrlrrrrrlllrrrllrrrrrlrrrrlllrrrllrrrrllrrrrrllllrrrlllrrrrlrrrrlllrrrlllrrrlrrlllrrrrlllrrrrrrlrrlllrrrrlllrrrrrrlrrrrrllrrrllrrrlrrrlllrrrrlllrrrrrrlrrlllrrrrlllrrrrrrlrrlllrrrrlllrrrrrrlrrlrrrlllrrrlrrrlll",
+  "fingers": "515521135311315515521135311315512554531124211235124521253123551255421125112455125542112511245512545311245211245135531125312551552113531131551552113531131551255453112421123512452125312355125542112511245512554211251124551254531124521124512453112453112455123455311235312345512455211252123512345531123531234551245521124521245551234554211235211235512545211245211345145211253112145145211253112145124545311242112351245212531235512554211251124551255421125112455153212211255124211245211245512345531123531234551245521125212351234553112353123455124552112452124555123455421123521123551254521124521123513521131353113151351552112135311315135125545112421134513552112135311315155155311213521131515515531121352113153555441244211254125421",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":7.241,"key":"C5","finger":4,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":7.241,"key":"G#4","finger":2,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":8.793,"key":"C5","finger":4,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":8.793,"key":"G#4","finger":2,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":10.345,"hand":"left","roll":"521","why":"the left hand tenth G2 F3 B3 (a hand cannot strike it): rolled from the bottom, 5 2 1; the right keeps F4 B4 D5"},
+    {"at":19.655,"key":"C5","finger":4,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":19.655,"key":"G#4","finger":2,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":21.207,"key":"C5","finger":4,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":21.207,"key":"G#4","finger":2,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":22.759,"hand":"left","roll":"521","why":"the left hand tenth G2 F3 B3 (a hand cannot strike it): rolled from the bottom, 5 2 1; the right keeps F4 B4 D5"},
+    {"at":31.034,"hand":"right","roll":"12345","why":"a ninth over B-flat2 the left hand cannot reach: rolled from the bottom, 1-2-3-4-5"},
+    {"at":41.379,"key":"C5","finger":4,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":41.379,"key":"G#4","finger":2,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":42.931,"key":"C5","finger":4,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":42.931,"key":"G#4","finger":2,"why":"bar 5 as taught: C4 1 G#4 2 C5 4, so D#5 takes 5 (not 5 on C5 and again on D#5)"},
+    {"at":52.759,"hand":"right","roll":"12345","why":"a ninth over B-flat2 the left hand cannot reach: rolled from the bottom, 1-2-3-4-5"}
+  ]
+}

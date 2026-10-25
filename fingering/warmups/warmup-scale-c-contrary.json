@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "file": "warmup-scale-c-contrary.mid",
+  "notes": 60,
+  "check": "d74ba49e",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrllllllllllllllllrlrlrlrlrlrlrlrlrlrlrlrlrlrlr",
+  "fingers": "123123454321321543213212312345112233112233445544332211332211",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":21.667,"key":"G3","finger":1,"why":"the card's fingering reversed: the left hand 1-2-3, 1-2-3-4-5 down"},
+    {"at":22.5,"key":"F3","finger":2,"why":"the card's fingering reversed: the left hand 1-2-3, 1-2-3-4-5 down"},
+    {"at":23.333,"key":"E3","finger":3,"why":"the card's fingering reversed: the left hand 1-2-3, 1-2-3-4-5 down"},
+    {"at":24.167,"key":"D3","finger":4,"why":"the card's fingering reversed: the left hand 1-2-3, 1-2-3-4-5 down"},
+    {"at":25,"key":"C3","finger":5,"why":"the card's fingering reversed: the left hand 1-2-3, 1-2-3-4-5 down"}
+  ]
+}

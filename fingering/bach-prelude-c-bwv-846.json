@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "file": "bach-prelude-c-bwv-846.mid",
+  "notes": 549,
+  "check": "490072d1",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "llrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrllrrrrrrrrrrrrrrllrrrrrrrrrrrrrrllrrr",
+  "fingers": "311241243112412432135135321351354213513542135135311241243112412431125125311251253213523531235235211351352113513521125125211251252112512521125125521251255212512531124124311241243212512532125125531251255312512553125125531251255112512521125125211251252112512521125125211251255212512552125125311351353113513531235235312352355112412451124124521241245212412441123123411231235112412451124124511241245112412451125125511251255112512551125125511251255112512551125125511251255112512531125125311251253112512551125125511251255112353132142121511235315424132151125",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":19.5,"key":"E5","finger":2,"why":"the bar's figure A1 E2 A5 the same four times"},
+    {"at":20.75,"key":"A4","finger":3,"why":"the bar's figure F#2 A3 D5 the same four times, no crossing"},
+    {"at":25.5,"key":"D5","finger":3,"why":"the bar's figure G1 D3 G5 the same four times"},
+    {"at":26.75,"key":"D5","finger":3,"why":"the bar's figure G1 D3 G5 the same four times"},
+    {"at":59.5,"key":"G4","finger":2,"why":"the bar's figure C1 G2 C5 the same four times"},
+    {"at":87.75,"key":"D#4","finger":4,"why":"the bar's figure A1 C2 D#4 the same four times"}
+  ]
+}

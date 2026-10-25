@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "file": "debussy-arabesque-1.mid",
+  "notes": 1448,
+  "check": "17e7c7bf",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "rrllrrrrrrllrrrrllrrrrrrllrrlllrrrlrllrrrlllrrrlrllrrrllllrlllllrrrrrlllrrlrlrrlrlrrlrlrrlrlrllllrllrllrrlrlrrlrlrrlrlrrlrlrllllrllrrlrlrlllrlrlrlrllrllllrllrrlrlrlllrlrlrlrllrllllrrlrlrllrllllrrlrlrlllrlrlllrlrlllrlrlrllrlrllrrrrrrllllrllrrrrrrllllrllllllrlllrlrllrlllllllrllrlrllrlllllllrllrlrllrlllllllrlrlrlrlrlrlllrllllrllrlrllrlllllllrlrlrlrlrlrlllrllllllrlllrlrrrrrrrrrrrrrrlrllrrrrrrrrrlrllrllrrrlrllrllrrrlrrllllllrrrrrrrlrrlrrlrrllllllrrrrrrrrlrrrrrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrllllrlllrlllrrlrlrrllrrrllrrllrrrllrrrrlllrrrlrllrrrrllllrrrrrrllrrrlrlrrlrrrllrrllrrrllrrrllrrrllrrllrrrllrrrrllrrrlrrrrrrlrrrrrrllrrrrrrllrrrrrrllrllllrrrllrrrrllrrrrlrlrrlrlrlrrrlrrrrrrlrrrrrrllrrrrrrllrrrrrrllrllllrrrrrrrrllrllllrrrrrllrrrrrlrrlrrrllrrrllrrllrrrrlllrrrlrllrrrrllllrrrrrrllrrrlrlrrlrrrllrrrllrrllrrrllrrrllrrllrrrllrrrrllllrrrrrllrrrlrrrlrrrlrrrlrrrlrrrlrrrlrrrllrrrrlrrrllllrlllllrrrrrllrllrllrllrrrrrrlrrrrrrllrllrrrrrrllllrllrrrrrrllllllrrrlrllrrrlllrrrlrllrrrllllrlllllrrrrrlllrrlrlrrlrlrrlrlrrlrlrllllrllrllrrlrlrrlrlrrlrlrrlrlrllllrllrrlrlrlllrlrlrlrllrllllrllrrlrlrlllrlrlrlrllrllllrrlrlrllrllllrrlrlrlllrlrlllrlrlllrlrlrllrlrllrrrrrrllllrllrrrrrrllllrlllrrlrllrlrllrrlrllrlllrlllrlllrllllrllrrlrllrlrllrrlrllrlllrlllrlllrlllrlrllrlrllrrlrllrlllrlrllrlrllrllllllrrrrrrrrrrrrrrrlrllllrrrrrrlrllllrrrrrrrlrllrrlrlrrlrlrrlrlrrlrlrllllrllrllrrlrlrrlrlrrlrlrrlrlrllllrllllllllrrlrrlrrlrrlrrlrrlrrlrrlrrlrrllrrllrrllrrllr",
+  "fingers": "11412345212422115213453212115315215521312521521542151253215321211151452134221312412321521251321212251214522141241232152122112121335212213212413345231521213352112211213223351324153224125132415322412553214553212533212533221354311235211245431124512124523212351321425352321215312132535132121532214253523212353122132534523211235322132535132123532211325345132122152131214411213212132124255211232123215252412142555132115354552143212321241242355455213211232124123512351253512235121351243512335122351213512235125125521352121441132513241124211251123511231521135145112415321125542511213523211244112412135213451132511222135512352511234543213554321322543212514321241155321125511354551254132133211212345432135543213225432125143212411553211254512451553211254551132324132134211225115511241521135145112415321125542511213523211244112241135213451132511222124511241515112545411243124212311232123312341255125511355513552141212311434231121231342132313243421445531234521124543112453212342152155213125215215421512532153212111514521342213124123215212513212122512145221412412321521221121213352122132124133452315212133521122112132233513241532241251324153224125532145532125332125332213543112352112454311245211354521215152534221132235142142351412312532121315253422113223514214235141231351322132215154321223514212311354214321123123454321321525321141351525312131245152214522141244231152125132121225121452214124423115212513212122512512541331551242151331551242151242513551355135511",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":7.917,"key":"C#5","hand":"right","why":"the right hand takes the arpeggio's turn under G#5 F#5; the left leaps to the low E"},
+    {"at":8.056,"key":"B4","hand":"right","why":"the right hand takes the arpeggio's turn under G#5 F#5; the left leaps to the low E"},
+    {"at":8.194,"key":"A4","hand":"right","why":"the right hand takes the arpeggio's turn under G#5 F#5; the left leaps to the low E"},
+    {"at":124.583,"key":"C#5","hand":"right","why":"the right hand takes the arpeggio's turn under G#5 F#5; the left leaps to the low E"},
+    {"at":124.722,"key":"B4","hand":"right","why":"the right hand takes the arpeggio's turn under G#5 F#5; the left leaps to the low E"},
+    {"at":124.861,"key":"A4","hand":"right","why":"the right hand takes the arpeggio's turn under G#5 F#5; the left leaps to the low E"}
+  ]
+}

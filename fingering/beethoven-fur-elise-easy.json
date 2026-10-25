@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "file": "beethoven-fur-elise-easy.mid",
+  "notes": 82,
+  "check": "5808bfcf",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrlrrrrlrrrrlrrrrrrrrrrlrrrrlrrrrlrrrrrrrrrlrrrrlrrrrlrrrrrrrrrrlrrrrlrrrrlr",
+  "fingers": "5454524311124451241515454524311124451541354545243111244512415154545243111244515413",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":9.429,"key":"A4","finger":3,"why":"C5 B4 A3 in place, as bar 16"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "warmup-child-knock-c.mid",
+  "notes": 25,
+  "check": "9c0e0fb1",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "1112223334445554443332221",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

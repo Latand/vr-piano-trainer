@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "file": "kotyku-sirenkyi.mid",
+  "notes": 77,
+  "check": "c8c1911d",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "12354321235432555432555432123543212354325554325554321235432321235321213131315",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":0.375,"key":"A4","finger":2,"why":"one position E1 A2 B3 C4 D5, the same in every phrase"},
+    {"at":10.5,"key":"B4","finger":3,"why":"C4 B3 A2 in place: no finger steps to the next key"},
+    {"at":12.375,"key":"A4","finger":2,"why":"one position E1 A2 B3 C4 D5, the same in every phrase"},
+    {"at":22.5,"key":"B4","finger":3,"why":"C4 B3 A2 in place: no finger steps to the next key"},
+    {"at":24.375,"key":"A4","finger":2,"why":"one position E1 A2 B3 C4 D5, the same in every phrase"},
+    {"at":27.375,"key":"A4","finger":2,"why":"one position E1 A2 B3 C4 D5, the same in every phrase"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "bach-minuet-g-easy.mid",
+  "notes": 84,
+  "check": "d0f061da",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "lrrrrrlrrrlrrrrrlrrrlrrrrrlrrrrrlrlrrlrrlrlrrrrrlrrrlrrrrrlrrrlrrrrrlrrrrrlrlrrlrrlr",
+  "fingers": "551234251115123425113454325454321122344152151234451115123425113454325343212415453223",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

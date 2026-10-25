@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "file": "row-row-row-your-boat.mid",
+  "notes": 27,
+  "check": "4495999c",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "111233234555511533311154321",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":4,"key":"E4","finger":3,"why":"the C position (C1-G5) through bar 3, as in bar 2"},
+    {"at":5.667,"key":"F4","finger":4,"why":"the C position (C1-G5) through bar 3, as in bar 2"},
+    {"at":6,"key":"G4","finger":5,"why":"G5 ends the C position phrase"},
+    {"at":9,"key":"G4","finger":1,"why":"the hand moves up for C': G1 under C5, three times"},
+    {"at":10,"key":"E4","finger":3,"why":"back to the C position: E3 E3 E3 C1 C1 C1"},
+    {"at":10.333,"key":"E4","finger":3,"why":"back to the C position: E3 E3 E3 C1 C1 C1"}
+  ]
+}

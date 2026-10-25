@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "file": "old-macdonald.mid",
+  "notes": 59,
+  "check": "8e974e81",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "33312215544313331221554431133311333333333333333333122155443",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":0,"key":"G4","finger":3,"why":"one position D1 E2 G3 A4 B5 for the song"},
+    {"at":17.455,"key":"G4","finger":3,"why":"one position D1 E2 G3 A4 B5 for the song"}
+  ]
+}

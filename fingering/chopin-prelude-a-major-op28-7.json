@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "file": "chopin-prelude-a-major-op28-7.mid",
+  "notes": 168,
+  "check": "5b8409a6",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "rlrrlllrrlllrrlllrrrrlrrrrllrrllrrllrrrrlrrrrllrrllrrllrrrrlrrrrllrrrllrrrllrrrrlrrrlllrrlllrrlllrrrrlrrrrlllrrlllrrllllrrrrrrrlrrrrllrrlllrrlllrrrrlrrrrrlllrrrllrrllrr",
+  "fingers": "153452112521125211235513135115511551151551313511521152115125121321125211255212515255521135211352113135121252135521355321123451251213511552115521151251413152112521152115",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":17,"hand":"right","roll":"12345","why":"the wide chord of bar 12, arpeggiated in the score: rolled 1-2-3-4-5 from A-sharp"}
+  ]
+}

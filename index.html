@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="vrplay-host" content="static">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тренажер для синтезатора</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: dark; --glass: #10121a; --ink: #ffffff; --accent: #7c6cff; --mint: #3ce0c0; }
+  html, body { margin: 0; height: 100%; background: var(--glass); color: var(--ink); font: 16px/1.4 system-ui, sans-serif; }
+  body { display: grid; grid-template-rows: auto 1fr auto; grid-template-columns: minmax(0, 1fr); }
+  header, footer { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 10px 14px; background: rgba(16, 18, 26, 0.92); }
+  h1 { font-size: 18px; margin: 0 8px 0 0; font-weight: 600; }
+  #view { width: 100%; height: 100%; display: block; min-height: 180px; }
+  button { font: inherit; color: var(--ink); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.28);
+           border-radius: 8px; min-height: 44px; min-width: 44px; padding: 6px 14px; cursor: pointer; }
+  button:hover { background: rgba(255, 255, 255, 0.18); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  select { font: inherit; color: var(--ink); background: #1c1f29; border: 1px solid rgba(255, 255, 255, 0.28);
+           border-radius: 8px; min-height: 44px; padding: 6px 10px; max-width: 100%; }
+  select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  label.pick { display: inline-flex; align-items: center; gap: 6px; color: rgba(255, 255, 255, 0.82); min-width: 0; max-width: 100%; }
+  label.pick select { min-width: 0; max-width: 100%; flex: 0 1 auto; text-overflow: ellipsis; }
+  #enter { background: var(--accent); border-color: var(--accent); font-weight: 600; }
+  #enter-note, #status, #host-note { margin: 0; color: rgba(255, 255, 255, 0.82); }
+  #host-note[hidden] { display: none; }
+  #status:empty { display: none; }
+  .group { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; max-width: 100%; }
+  .legend { display: flex; gap: 14px; margin-left: auto; color: rgba(255, 255, 255, 0.82); }
+  body.in-xr header, body.in-xr footer { display: none; }
+  #lines { flex-basis: 100%; display: flex; flex-direction: column; margin: 0; color: rgba(255, 255, 255, 0.82); }
+  #lines[hidden] { display: none; }
+  #lines .song { color: var(--ink); font-weight: 600; }
+  #lines .metronome { color: var(--ink); font-weight: 600; font-size: 18px; }
+  #lines .warn { color: #aaa0ff; font-weight: 600; }
+  /* a narrow window keeps the sound's two switches in one row; their volumes are on the panel's «Звук» page */
+  @media (max-width: 499px) { label.pick.volume { display: none; } }
+  /* and every button of the page stays in a phone-sized window (390 x 844): closer rows, the four
+     selects two by two with their words above them, the two switches of the hands and fingers beside each other */
+  @media (max-width: 499px) {
+    header, footer { padding: 6px 10px; gap: 4px 8px; }
+    .group { gap: 4px 8px; }
+    button { padding: 4px 10px; }
+    .group.picks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .group.picks label.pick { flex-direction: column; align-items: stretch; gap: 2px; font-size: 13px; line-height: 1.2; }
+    .group.picks label.pick select { width: 100%; }
+    .group.picks button { padding-left: 6px; padding-right: 6px; }
+  }
+  .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Тренажер для синтезатора</h1>
+  <button id="enter" type="button" hidden>Увійти</button>
+  <p id="enter-note"></p>
+  <p id="host-note" hidden></p>
+  <p id="status" role="status" aria-live="polite"></p>
+  <p id="lines" aria-label="Панель" hidden></p>
+</header>
+<canvas id="view" aria-label="Падаючі ноти над клавіатурою"></canvas>
+<footer>
+  <div class="group" role="group" aria-label="Відтворення">
+    <button type="button" data-command="toggle">Грати</button>
+    <button type="button" data-command="restart">Спочатку</button>
+    <button type="button" data-command="speed">100 % темп</button>
+    <button type="button" data-command="loop">Петля звідси</button>
+    <button type="button" data-command="barlines">Лінії тактів: так</button>
+  </div>
+  <div class="group picks" role="group" aria-label="Хто грає, пісня, рівень, руки й пальці">
+    <label class="pick">Хто грає <select id="profile"></select></label>
+    <label class="pick">Пісня <select id="song"></select></label>
+    <label class="pick">Рівень <select id="level"></select></label>
+    <label class="pick">Підсвітка <select id="lead"></select></label>
+    <button type="button" data-command="hands">Руки обидві</button>
+    <button type="button" data-command="fingers">Пальці: так</button>
+  </div>
+  <div class="group" role="group" aria-label="vrplay">
+    <button type="button" data-command="screens" hidden>Назад до екранів</button>
+  </div>
+  <div class="group" role="group" aria-label="Звук">
+    <button type="button" data-command="metronome">Метроном: так</button>
+    <label class="pick volume">гучність <select id="metronomeVolume" aria-label="Гучність метронома"></select></label>
+    <button type="button" data-command="voice">Звук пісні: так</button>
+    <label class="pick volume">гучність <select id="voiceVolume" aria-label="Гучність пісні"></select></label>
+  </div>
+  <div class="group" role="group" aria-label="Клавіатура">
+    <button type="button" data-command="keyboard">Клавіатура</button>
+  </div>
+  <div class="group" role="group" aria-label="Вигляд">
+    <button type="button" data-view="front">Спереду</button>
+    <button type="button" data-view="seat">Із місця</button>
+  </div>
+  <div class="legend" aria-label="Кольори рук">
+    <span><span class="swatch" style="background: var(--accent)"></span>права</span>
+    <span><span class="swatch" style="background: var(--mint)"></span>ліва</span>
+  </div>
+</footer>
+<script type="module">
+  import { main } from './js/app.js';
+  main();
+</script>
+</body>
+</html>

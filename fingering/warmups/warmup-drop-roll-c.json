@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "warmup-drop-roll-c.mid",
+  "notes": 24,
+  "check": "adb9f086",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrllllllllrrlrllrrlr",
+  "fingers": "153153512512511523511523",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "file": "happy-birthday.mid",
+  "notes": 25,
+  "check": "d6abe251",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "1121431121541154321443121",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":10,"key":"G4","finger":3,"why":"G3 F#2 E1 in the D position: no finger steps to the next key"},
+    {"at":12,"key":"C5","finger":4,"why":"the G position G1 A2 B3 C4 for the last phrase"}
+  ]
+}

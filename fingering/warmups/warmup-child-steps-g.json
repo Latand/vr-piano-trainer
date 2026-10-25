@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "warmup-child-steps-g.mid",
+  "notes": 30,
+  "check": "5565f351",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "123455432112345543211353113531",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

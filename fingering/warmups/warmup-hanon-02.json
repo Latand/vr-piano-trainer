@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "warmup-hanon-02.mid",
+  "notes": 450,
+  "check": "1e51d6bf",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "lrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlr",
+  "fingers": "513215243324334251321524332433425132152433243342513215243324334251321524332433425132152433243342513215243324334251321524332433425132152433243342513215243324334251321524332433425132152433243342513215243324334251321524332433421532514233423324153251423342332415325142334233241532514233423324153251423342332415325142334233241532514233423324153251423342332415325142334233241532514233423324153251423342332415325142334233241532514233423324152241322332231441",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

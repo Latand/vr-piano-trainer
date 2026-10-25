@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "beethoven-ode-to-joy.mid",
+  "notes": 238,
+  "check": "04507a18",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "llrrllrrllrrllrrllrrrllrllrrllrrlrrlrrllrrllrrllrrllrrllrrllrrllrrllrrllrrllrrrllrllrrllrrlrrlrrllrrllrrllrrllrrlrrrllrrllrrllrrllrrllrrllrrlrllrrllrrllrrllrrrllrrllrrllrrllrrllrllrrllrrllrrllrrlrrrrrllrllrrllrrllrrllrrlrrrlrrrllrrllrrlrr",
+  "fingers": "3112311231133115511543122113511311211221133124512451125112311331133124311551154312211351131121122124313551455134512421152115211521122113211415411443124213421453214311321125113521321421245124512551351431221135112511241124124513551345123513",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

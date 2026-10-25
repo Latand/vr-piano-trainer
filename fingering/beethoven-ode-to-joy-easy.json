@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "file": "beethoven-ode-to-joy-easy.mid",
+  "notes": 90,
+  "check": "8ee5c8ad",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "lrrlrrlrrlrrlrrlrrlrrrlrrlrrlrrlrrlrrlrrlrrlrlrrrrlrrrrrlrrrrrlrrlrrlrlrrlrrlrrlrrlrrlrrlr",
+  "fingers": "333345554332111223532233334555433211122352141122311234311234321142133344555433211132312151",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":0,"key":"B4","finger":3,"why":"the G position G1-D5 from the start"},
+    {"at":6,"key":"A2","finger":2,"why":"B1 A2 D5: the left hand keeps D5 E4 G3 A2 B1"},
+    {"at":9.6,"key":"G2","finger":3,"why":"G3 as in bar 1: the same position D5 E4 G3 A2 B1"},
+    {"at":15.6,"key":"A2","finger":2,"why":"B1 A2 D5: the left hand keeps D5 E4 G3 A2 B1"},
+    {"at":24.6,"key":"B4","finger":3,"why":"A2 B3 C4 B3 A2 in the G position, as bars 9-10"},
+    {"at":27.6,"key":"D3","finger":2,"why":"E1 D2: the thumb does not step down"},
+    {"at":28.2,"key":"B4","finger":3,"why":"the thumb on low D, then B3 back in the G position"},
+    {"at":28.8,"key":"G2","finger":3,"why":"G3 F4 E5 G3: no finger walks down the scale"},
+    {"at":30,"key":"F2","finger":4,"why":"G3 F4 E5 G3: no finger walks down the scale"}
+  ]
+}

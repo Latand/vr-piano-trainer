@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "warmup-scale-arpeggio-db.mid",
+  "notes": 168,
+  "check": "da709571",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "lrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlr",
+  "fingers": "322311423324113223114233241122112433421123321124334211233232231142332411322311423324112211243342112332112433421133525231221341221522411322315252312213412215224113223152",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

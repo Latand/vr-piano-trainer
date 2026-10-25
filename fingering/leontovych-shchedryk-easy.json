@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "file": "leontovych-shchedryk-easy.mid",
+  "notes": 165,
+  "check": "d87d49d0",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlrrrrrlrrrrrlrrrrrlrrrrlrrrrrrlrrrrlrrrrrrlrrrrlrrrrlrrrrlrrrrlrrrrlr",
+  "fingers": "323132313231323113231132312323133231232315323113231332315323133231132315323155452554525545254341555532514432533343511332123123245432123123245431323123231232313323151",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":38.839,"key":"E4","finger":2,"why":"the scale from D: 1-2-3, the thumb under at G, 1-2-3-4"},
+    {"at":39.107,"key":"F#4","finger":3,"why":"the scale from D: 1-2-3, the thumb under at G, 1-2-3-4"},
+    {"at":39.375,"key":"G4","finger":1,"why":"the scale from D: 1-2-3, the thumb under at G, 1-2-3-4"},
+    {"at":42.054,"key":"E4","finger":2,"why":"the scale from D: 1-2-3, the thumb under at G, 1-2-3-4"},
+    {"at":42.321,"key":"F#4","finger":3,"why":"the scale from D: 1-2-3, the thumb under at G, 1-2-3-4"},
+    {"at":42.589,"key":"G4","finger":1,"why":"the scale from D: 1-2-3, the thumb under at G, 1-2-3-4"}
+  ]
+}

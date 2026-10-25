@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "file": "pachelbel-canon-easy.mid",
+  "notes": 90,
+  "check": "734e55b9",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "lllllllllrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlrrlr",
+  "fingers": "131325431534133222514234153413322151433211335413134322152543534312132112435123154241535415",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":9,"key":"E5","finger":4,"why":"F#5 E4 D3 C#2: no finger steps down"},
+    {"at":33,"key":"E4","finger":2,"why":"F#3 D1 E2, then the hand moves up: C#1 D2 F#4 A5"},
+    {"at":33.5,"key":"C#5","finger":1,"why":"F#3 D1 E2, then the hand moves up: C#1 D2 F#4 A5"},
+    {"at":34,"key":"D5","finger":2,"why":"F#3 D1 E2, then the hand moves up: C#1 D2 F#4 A5"},
+    {"at":34.5,"key":"F#5","finger":4,"why":"F#3 D1 E2, then the hand moves up: C#1 D2 F#4 A5"}
+  ]
+}

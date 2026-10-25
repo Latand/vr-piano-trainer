@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "file": "london-bridge.mid",
+  "notes": 48,
+  "check": "bf49067d",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "454323412323445432352531454323412323445432352531",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":0,"key":"G4","finger":4,"why":"the D position D1-A5 from the start, as the second half"}
+  ]
+}

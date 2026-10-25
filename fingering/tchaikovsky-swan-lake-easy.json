@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "file": "tchaikovsky-swan-lake-easy.mid",
+  "notes": 148,
+  "check": "10c52b49",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "lrrrrrlrrrrlrrlrrrrlrlrrrlrrrrrlrrrrlrrlrrrrlrrlrrrrrlrrrrrlrrrrrlrrrrrrlrrrrrlrrrrrlrrrrrlrrrrrlrrlrrlrrrrrlrrrrlrrlrrrrlrlrrrlrrrrrlrrrrlrrlrrrrlr",
+  "fingers": "1512341535315134214124532151234153531514421421131231213212344323455421213234121321235432342521241525511512341535315134214114234151234153531513421513",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":2.25,"key":"D5","finger":3,"why":"the B position B1 C#2 D3 E4 F#5 for the phrase"},
+    {"at":3,"key":"F#5","finger":5,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":4.125,"key":"D5","finger":3,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":14.25,"key":"D5","finger":3,"why":"the B position B1 C#2 D3 E4 F#5 for the phrase"},
+    {"at":15,"key":"F#5","finger":5,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":16.125,"key":"D5","finger":3,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":24,"key":"C#5","finger":1,"why":"the thumb under at F#: C#1 D2 E3 F#1 G2 A3 up to B4"},
+    {"at":24.75,"key":"D5","finger":2,"why":"the thumb under at F#: C#1 D2 E3 F#1 G2 A3 up to B4"},
+    {"at":25.5,"key":"E5","finger":3,"why":"the thumb under at F#: C#1 D2 E3 F#1 G2 A3 up to B4"},
+    {"at":26.25,"key":"F#5","finger":1,"why":"the thumb under at F#: C#1 D2 E3 F#1 G2 A3 up to B4"},
+    {"at":34.125,"key":"B5","finger":4,"why":"C#5 B4 in place: no finger steps"},
+    {"at":38.25,"key":"F#5","finger":1,"why":"the thumb under at F#: C#1 D2 E3 F#1 G2 A3 up to B4"},
+    {"at":51,"key":"F#5","finger":5,"why":"the B position B1 C#2 D3 E4 F#5 for the reprise"},
+    {"at":53.25,"key":"D5","finger":3,"why":"the B position B1 C#2 D3 E4 F#5 for the phrase"},
+    {"at":54,"key":"F#5","finger":5,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":55.125,"key":"D5","finger":3,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":65.25,"key":"D5","finger":3,"why":"the B position B1 C#2 D3 E4 F#5 for the phrase"},
+    {"at":66,"key":"F#5","finger":5,"why":"the B position: F#5 D3 F#5 D3"},
+    {"at":67.125,"key":"D5","finger":3,"why":"the B position: F#5 D3 F#5 D3"}
+  ]
+}

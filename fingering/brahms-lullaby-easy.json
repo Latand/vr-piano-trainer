@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "file": "brahms-lullaby-easy.mid",
+  "notes": 67,
+  "check": "c0a0e7f5",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrlrrrlrrrlrrrlrrrrlrrrrlrrrlrrrrlrrrlrrrlrrrlrrrlrrrlrrrlrrrlrrrlr",
+  "fingers": "1112111212154444312431124312453241511554213214345141155421321443211",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":0.909,"key":"A#4","finger":2,"why":"G1 B-flat2 throughout, so E-flat takes 5 in bar 3"},
+    {"at":7.273,"key":"D5","finger":4,"why":"E-flat5 D4 C3 C3 B-flat2: no finger steps"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "jingle-bells.mid",
+  "notes": 51,
+  "check": "78179df7",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "333333351234444433333223253333333512344444333355421",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

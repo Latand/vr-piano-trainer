@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "file": "chopin-waltz-op64-1.mid",
+  "notes": 1370,
+  "check": "5352bade",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrlllrlllrrlrrlllrrlllrlrllrllrrlrrllrrllrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrlllrlllrrlrrlllrrlllrlrlllrlllrrlrrllrrlrrlrrrlllrrlllrrlrrllrrllrrlrrrlllrrlllrrlrrllrrrrlrrllrrrrlrrlllrrrrlrrllrrlllrrlrrlllrrrrlrrrlrrrllrrlrrllrrllrrlrrrlrrrllrrlrrlrrrrrlrrlllrrrrlrrlllrrrrlrrllrrllrrlrllrlrrrlllrrlllrrlrrllrrllrrlrrrlllrrlllrrlrrllrrrrlrrllrrrrlrrlllrrrrlrrllrrlllrrlrrlllrrrrlrrrlrrrllrrlrrllrrllrrlrrrlrrrllrrlrrlrrrrrlrrlllrrrrlrrlllrrrrlrrllrrllrrlrllrlllllllrlllrllllllrlrllllrlrllllllrlllllllrlrllllllrlrllllllrlrrlllrlllrlrllllrlrlllllrlrllllrlrlllllllrlllrlllrlrlllrrlrrllrrrrlrllllrrlrllllllrrlrllllrrlrllllllrrlrllllllrrlrllllllrrlrlllrlllrrlrlllrlllrrlrllllrrlrllllllrrlrllllllrlrlllllllrllllrrllllrlrllrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrlllrlllrrlrrlllrrlllrlrllrllrrlrrllrrllrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrrlllrrlllrrlrlllrlllrrlrrlllrrlllrlrlllrlllrrlrrllrrlrrlrrrlllrrlllrrlrrllrrllrrlrrrlllrrlllrrlrrllrrrrlrrllrrrrlrrlllrrrrlrrllrrlllrrlrrlllrrrrlrrrlrrrllrrlrrllrrllrrlrrrlrrrllrrlrrlrrrrrlrrlllrrrrlrrlllrrrrlrrllrrllrrlrllrlrrlllrrlllrrlrrllrrllrrlrrrlllrrlllrrlrrllrrrrlrrllrrrrlrrlllrrrrlrrllrrlllrrlrrlllrrrrlrrrlrrrllrrlrrllrrllrrlrrrlrrrllrrlrrlrrrrrlrrrlllrrrrrrrrrrrrrlrrrllrrrllrrlrlll",
+  "fingers": "21243123243124312431243512521435211254352112521435125214352112531521235211254531353121512531215312552142121413212321525125214352112543521125214351252143521125315212352112545313531215125312153125553145313152352215214232521125214352321212124534252112521435232121252432112135215314321532321232154512521312354542134215352342214225545421342154435114125542541143251353121325352142213152512523252112521435232121212453425211252143523212125243211213521531432153232123215451252131235454213421535234221422554542134215443511412554254114325135312132535214221315251553213211321232132115221211555215215553153115552152125452152135255214521352212115232321152212115552152152421142125542115414411513422121155132132115512121155352152135535315311553521521155252125211552521252115512121155132132115515315311545315315421211321211432112325112431243124312431243124351242143421125435211252143512521435211253152123521125453135312151253121531255214212141321232152512521435211254352112521435125214352112531521235211254531353121512531215312555314531315235221521423252112521435232121212453425211252143523212125243211213521531432153232123215451252131235454213421535234221422554542134215443511412554254114325135312132535214221315251253252112521435232121212453425211252143523212125243211213521531432153232123215451252131235454213421535234221422554542134215443511412553154314321321432132413221542213152541",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":12.643,"key":"G#2","finger":5,"why":"the waltz bass on the outer fingers: G#2 5 then A2 4 (no 5 over 3 in 0.21 s)"},
+    {"at":12.857,"key":"A2","finger":4,"why":"the waltz bass on the outer fingers: G#2 5 then A2 4 (no 5 over 3 in 0.21 s)"},
+    {"at":18.857,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":19.071,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":20.786,"key":"A#4","hand":"left","why":"the accompaniment chord C#4-D#4-A#4, written in the upper staff, is the left hand's"},
+    {"at":29.143,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":29.357,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":31.071,"key":"A#4","hand":"left","why":"the accompaniment chord C#4-D#4-A#4, written in the upper staff, is the left hand's"},
+    {"at":69.214,"key":"G#2","finger":5,"why":"the waltz bass on the outer fingers: G#2 5 then A2 4 (no 5 over 3 in 0.21 s)"},
+    {"at":69.428,"key":"A2","finger":4,"why":"the waltz bass on the outer fingers: G#2 5 then A2 4 (no 5 over 3 in 0.21 s)"},
+    {"at":75.428,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":75.643,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":77.357,"key":"A#4","hand":"left","why":"the accompaniment chord C#4-D#4-A#4, written in the upper staff, is the left hand's"},
+    {"at":85.714,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"},
+    {"at":85.928,"key":"F4","hand":"left","why":"the accompaniment chord C#4-F4, written in the upper staff, is the left hand's"}
+  ]
+}

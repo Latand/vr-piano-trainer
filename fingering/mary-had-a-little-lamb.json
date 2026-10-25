@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "mary-had-a-little-lamb.mid",
+  "notes": 26,
+  "check": "76dbf16e",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "32123332223553212333322321",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

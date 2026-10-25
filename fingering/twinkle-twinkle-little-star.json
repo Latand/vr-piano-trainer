@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "twinkle-twinkle-little-star.mid",
+  "notes": 42,
+  "check": "b88d8f15",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "114455433221115544332554433211445543322111",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

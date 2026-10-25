@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "file": "ho-ho-ho-koza.mid",
+  "notes": 70,
+  "check": "2924c9e7",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "5554355543555431143211432114321143255543555435554311432114321143211432",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":0,"key":"G4","finger":5,"why":"one C position for the whole song (C1..G5), as bar 3 on"},
+    {"at":1.364,"key":"G4","finger":5,"why":"one C position for the whole song (C1..G5), as bar 3 on"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "frere-jacques.mid",
+  "notes": 32,
+  "check": "eafced10",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+  "fingers": "12311231345234454321454321414414",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

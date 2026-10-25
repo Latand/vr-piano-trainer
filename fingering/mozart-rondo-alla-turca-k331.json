@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "file": "mozart-rondo-alla-turca-k331.mid",
+  "notes": 1614,
+  "check": "92d57f50",
+  "model": "standard",
+  "optimiser": 2,
+  "hands": "rrrrlrllllrrllrrlrllllrrllrrlrrllrrlrrllrrlrllllrllrrrlrllrrllrrllrrrrlrllrrllrrllrrrrlrllrrlrrlrrlrrrrrlrrlrrlrrlrrlrrrrrrrlrrlrrlrrlrrlrrrrrrlrrlrrlrrlrrlrrrrrrrlrrlrrlrrlrrlrrrrrrlrllllrrllrrlrllllrrllrrlrrllrrlrrllrrlrllllrllrlrllrlrllrlrllrlrllrllrllllrllrrllrrrrrllllrrllrrlrrllllrrlrrlrrlrrllllrrlrrllllrrlrrllllrrlrrlrrlrrllllrrllrrlrrllllrrlrrlrrlrrllllrrlrrllllrrlrrlrrrrrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrllrrrrrlrrllrrllrrllrrlrrllrrlrrllrrlrrllrrllrrllrrlrllrllrrllrrlrrllrrllrrllrrlrrllrrlrrllrrlrrlrrlrrlrrlrlrrrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrllrrllrrlrrllrrlrrllrrllrrrrrllllrrllrrlrrllllrrlrrlrrlrrllllrrlrrllllrrlrrllllrrlrrlrrlrrllllrrllrrlrrllllrrlrrlrrlrrllllrrlrrllllrrlrrlrrrrrrlrllllrrllrrlrllllrrllrrlrrllrrlrrllrrlrllllrllrrrlrllrrllrrllrrrrlrllrrllrrllrrrrlrllrrlrrlrrlrrrrrlrrlrrlrrlrrlrrrrrrrlrrlrrlrrlrrlrrrrrrlrrlrrlrrlrrlrrrrrrrlrrlrrlrrlrrlrrrrrrlrllllrrllrrlrllllrrllrrlrrllrrlrrllrrlrllllrllrlrllrlrllrlrllrlrllrllrllllrllrrllrrrrrllllrrllrrlrrllllrrlrrlrrlrrllllrrlrrllllrrlrrllllrrlrrlrrlrrllllrrllrrlrrllllrrlrrlrrlrrllllrrlrrllllrrlrrlrrlrlllrrllrrlrllllrrrrlllllllrrrrlllllllrrlrrlrrlrrllllrrrlllrllllrrrrlrrrrlrrrrlrrrllllrrrlllrllllrrrrlllllllrrrrlllllllrrlrrlrrlrrllllrrrlllrllllrrrlllrllllrrrrlrrrrlrrrrlrrrlrlllrrlrlllrrrlrlllllllrrlrllllllllrlrlrlrlrlrlrlrlrlllllllrlrlrlrlrlrlrlrllrllllllrlllllrrrrlllllllrrrrlllllllrrlrrlrrlrrllllrrrlllrllllrrrlllrllllrrrrlrrrrlrrrrlrrrllllrrrrlllrrllllrrlllrrllllrrlllrrllllrrlrrllllrrlrrlrrllllrrrrllllrrrr",
+  "fingers": "432143212143212345212153212145321234432123452121321534552124211321243455212421132124345552245131133212135241244541322121131352412455413241212125241244541322121131352412445413251221213221213221124421215421214532123443212355313133145521453312533114521421321212211251115155321151115115532115115115114532114514542115115532115115115215532115111511553211511511511453211451553211511531523213452143212421323122154212321425413123314331125324132413441325154243422442325122132211221325342151212321423135432512313131233145454213252121324122131212321415452552215232512313131233145454213252121321352143352235113432315214321242132312215421232142441212321432112532213221322132543214321432143543212121232142534315251221312121515532115111511553211511511511453211451454211511553211511511521553211511151155321151151151145321145155321151153151321332121422112442121542121453212344321234521213215345521242113212434552124211321243455522451311332121352412445413221211313524124554132412121251311344311322311213524124454132512212132212132211244212154212145321234432123553131331455214533125331145214213212122112511141553211511141155321151151151155321245155421141155321141131152145321151114115532115115115115532114515532114115515513211511151553211245111532112451115321531231431235321125112553211245112451124511245321123112553211245111532112451115321531231431235321125112553211241114532112345123451234512332121124412141244121412112441214121451421124312211253242524235213221342132215113151351532112451115321124511153215312314312353211251125532112411145321123411234112342123532112351111553211511115532115111155321151155321151155155321123553211235",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":3,"key":"E5","finger":5,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":65,"key":"A5","finger":4,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":75.5,"key":"G#5","finger":3,"why":"bar 38 as a teacher plays it: E5 1 F#5 2 G#5 3 E5 2, C#5 1 D#5 2 E5 3"},
+    {"at":75.75,"key":"E5","finger":2,"why":"E5 1 F#5 2 G#5 3 E5 2, C#5 1 D#5 2 E5 3: no 5 under 3 (the edition 5 was aligned wrong)"},
+    {"at":76,"key":"C#5","finger":1,"why":"bar 38 as a teacher plays it: E5 1 F#5 2 G#5 3 E5 2, C#5 1 D#5 2 E5 3"},
+    {"at":76.25,"key":"D#5","finger":2,"why":"bar 38 as a teacher plays it: E5 1 F#5 2 G#5 3 E5 2, C#5 1 D#5 2 E5 3"},
+    {"at":76.5,"key":"E5","finger":3,"why":"bar 38 as a teacher plays it: E5 1 F#5 2 G#5 3 E5 2, C#5 1 D#5 2 E5 3"},
+    {"at":77.75,"key":"D#5","finger":1,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":93,"key":"A3","finger":1,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":93.5,"key":"F#3","finger":2,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":130,"key":"D5","finger":4,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":155,"key":"G#4","finger":2,"why":"the edition's printed fingering (Mutopia source)"},
+    {"at":181,"key":"F#4","finger":2,"why":"the edition's printed fingering (Mutopia source)"}
+  ]
+}

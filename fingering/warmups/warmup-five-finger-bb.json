@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "file": "warmup-five-finger-bb.mid",
+  "notes": 70,
+  "check": "c8d9d4ed",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "rrrrrrrrrllllllllllrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlllrrr",
+  "fingers": "1234543215432123455142332415243342515142332415243342515133153351531135",
+  "reviewed": "2026-10-23",
+  "overrides": []
+}

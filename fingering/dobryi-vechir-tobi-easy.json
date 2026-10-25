@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "file": "dobryi-vechir-tobi-easy.mid",
+  "notes": 88,
+  "check": "e0e9a79f",
+  "model": "five-finger",
+  "optimiser": 2,
+  "hands": "lrrrrlrrrrlrrrrlrrrrlrrrlrrrrlrrrrlrrrlrrrlrlrrrrlrrrrlrrrrlrrrrlrrrlrrrrlrrrrlrrrlrrrlr",
+  "fingers": "1221124321434552432152344345514321523514325312211243215345514321523443455143215234132152",
+  "reviewed": "2026-10-23",
+  "overrides": [
+    {"at":1.5,"key":"E3","finger":2,"why":"the left hand's five keys A5 B4 C#3 E2 F#1: no thumb step"},
+    {"at":3,"key":"B2","finger":4,"why":"the left hand's five keys A5 B4 C#3 E2 F#1: B4 so A5 needs no step"},
+    {"at":3,"key":"B4","finger":3,"why":"the G-sharp position G#1 A2 B3 C#4 D5 for bar 2"},
+    {"at":4.5,"key":"E3","finger":2,"why":"the left hand's five keys A5 B4 C#3 E2 F#1"},
+    {"at":12.75,"key":"B4","finger":3,"why":"B3 C#4 B3 A2 G#1 A2: the hand stays"},
+    {"at":19.5,"key":"E3","finger":2,"why":"the left hand's five keys A5 B4 C#3 E2 F#1: no thumb step"},
+    {"at":21,"key":"B4","finger":3,"why":"the G-sharp position G#1 A2 B3 C#4 D5 for bar 8"},
+    {"at":30.75,"key":"B4","finger":3,"why":"B3 C#4 B3 A2 G#1 A2: the hand stays"}
+  ]
+}
