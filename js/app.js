@@ -27,6 +27,7 @@ import { PLAYERS, playerOf, songDefaults, profileSongs, gridPage, gridPageOf,
 import { metronomeLines } from './tempo.js';
 import { Sound } from './audio.js';
 import { voiceNotes } from './schedule.js';
+import { SongGrab, scrubTime, pointerRay, rayWaterfall, WHEEL_REST, WHEEL_LINE } from './scrub.js';
 import { linesAt, buildBarLines, digitAtlas, clickGrid, countInBar } from './barlines.js';
 import { WHITE_PITCH, WHITE_COUNT, WHITE_LEN, keyCentre, LOW, HIGH } from './geometry.js';
 import { Renderer, Batch, FloatBatch } from './render.js';
@@ -141,6 +142,10 @@ export class App {
     this.batches.lines = new Batch();
     this.digits = this.renderer.texture(digitAtlas());
     this.previewBarLines = params.has('barlines') ? params.get('barlines') === '1' : null;
+    // the song held by a scrub (scrub.js SongGrab, with `by`: xr | mouse | wheel); the desktop
+    // preview's cameras as last drawn, for the mouse ({proj, view, x, w}: CSS pixels across)
+    this.scrub = null;
+    this.eyes = [];
   }
 
   now() { return performance.now() / 1000; }
@@ -437,6 +442,7 @@ export class App {
   // between frames.
   startClock(speed) {
     this.transport = new Transport(this.song, this.now(), { lead: this.lead });
+    this.scrub = null; // a hold of the song before goes with it
     this.transport.setCountIn(this.countIn(), this.now());
     this.transport.setSpeed(speed, this.now());
     this.endSeen = false;
@@ -670,6 +676,93 @@ export class App {
     this.changed();
   }
 
+  // Whether the song plays: a held song (a scrub) as it will once let go.
+  playing() {
+    if (this.scrub) return this.scrub.playing;
+    return !!(this.transport && this.transport.playing && this.frozen === null);
+  }
+
+  // A scrub (scrub.js): the headset's trigger on the waterfall (xr.js), the desktop's mouse or wheel
+  // over it. It takes the song wherever the waterfall shows it, outside calibrating and
+  // «Підлаштувати» (their own presses own the keyboard then). A frozen preview moment (t=) becomes
+  // the clock's, standing. -> the song time it starts from, or null.
+  scrubBegin(now = this.now(), by = 'xr') {
+    const t = this.transport;
+    if (!t || !this.song || this.scrub || ['calibrate', 'adjust'].includes(this.panelMode) || this.previewStep || this.previewAdjust) return null;
+    const playing = this.playing();
+    if (this.frozen !== null) { t.seek(this.frozen, now); this.frozen = null; }
+    this.scrub = Object.assign(new SongGrab(t, now, playing), { by });
+    this.changed();
+    return this.scrub.from;
+  }
+
+  // The held song to `time` (clamped: song.js seek). -> where it stands, or null when nothing is
+  // held any more (a new song, «Спочатку», a warm-up's card): the hand lets it go.
+  scrubTo(time, now = this.now()) {
+    const g = this.scrub;
+    if (!g || g.transport !== this.transport) { this.scrub = null; return null; }
+    return g.to(time, now);
+  }
+
+  // Let go at `time` (null: where it stands): on as it was, playing or paused.
+  scrubEnd(time = null, now = this.now()) {
+    const g = this.scrub;
+    if (!g) return;
+    this.scrub = null;
+    if (g.transport === this.transport) g.end(time, now);
+    this.changed();
+  }
+
+  // The desktop preview: the waterfall under a point of the canvas (CSS pixels from its top left),
+  // through the camera of the picture there (renderDesktop). bounded: on the waterfall only, else
+  // anywhere on its plane. -> rayWaterfall's hit with its eye, or null.
+  waterfallAt(x, y, { bounded = true, eye = null } = {}) {
+    const h = this.canvas.clientHeight;
+    const e = eye || this.eyes.find(c => x >= c.x && x < c.x + c.w);
+    if (!e || !h) return null;
+    const { origin, dir } = pointerRay(e.proj, e.view, ((x - e.x) / e.w) * 2 - 1, 1 - (y / h) * 2);
+    const hit = rayWaterfall(identity(), WHITE_PITCH, WHITE_LEN, origin, dir, { bounded });
+    return hit && { ...hit, eye: e };
+  }
+
+  // The mouse: pressed on the waterfall it takes the song (-> whether it did); moved, the song
+  // follows the pointer one to one; let go, it goes on as it was.
+  mouseDown(x, y) {
+    if (this.xr) return false;
+    const hit = this.waterfallAt(x, y);
+    if (!hit) return false;
+    const from = this.scrubBegin(this.now(), 'mouse');
+    if (from === null) return false;
+    this.scrub.mouse = { y: hit.y, eye: hit.eye };
+    return true;
+  }
+  mouseMove(x, y) {
+    const g = this.scrub;
+    if (!g || g.by !== 'mouse') return;
+    const hit = this.waterfallAt(x, y, { bounded: false, eye: g.mouse.eye });
+    if (hit) this.scrubTo(scrubTime(g.from, hit.y - g.mouse.y));
+  }
+  mouseUp() { if (this.scrub && this.scrub.by === 'mouse') this.scrubEnd(); }
+
+  // The wheel over the waterfall: the notes move as far on the screen as the wheel scrolled, a
+  // wheel down taking them down (forward); the song goes on WHEEL_REST after the wheel stops.
+  // deltaY and deltaMode as WheelEvent gives them. -> whether it took the wheel.
+  wheel(x, y, deltaY, deltaMode = 0) {
+    const g = this.scrub;
+    if (this.xr || (g && g.by !== 'wheel')) return false;
+    const px = deltaMode === 1 ? deltaY * WHEEL_LINE : deltaMode === 2 ? deltaY * this.canvas.clientHeight : deltaY;
+    const at = this.waterfallAt(x, y);
+    const to = at && this.waterfallAt(x, y + px, { bounded: false, eye: at.eye });
+    if (!at || !to) return false;
+    const now = this.now();
+    if (!g && this.scrubBegin(now, 'wheel') === null) return false;
+    const held = this.scrub;
+    held.time = scrubTime(held.time ?? held.from, to.y - at.y);
+    held.time = this.scrubTo(held.time, now);
+    held.until = now + WHEEL_REST;
+    return true;
+  }
+
   songTime(now = this.now()) {
     if (this.frozen !== null) return this.frozen;
     return this.transport ? this.transport.time(now) : 0;
@@ -781,6 +874,8 @@ export class App {
     const endSession = () => { if (this.session) { this.session = null; this.sessionTicket++; } };
     switch (arg === undefined ? id : kind) {
       case 'toggle':
+        // while the song is held, what it does once let go
+        if (t && this.scrub) { this.scrub.playing = !this.scrub.playing; break; }
         if (t) {
           if (this.frozen !== null) { t.anchorSong = this.frozen; this.frozen = null; }
           t.toggle(now);
@@ -788,9 +883,9 @@ export class App {
         }
         break;
       case 'fingers': this.setFingers(!this.guideOn()); break;
-      case 'restart': if (t) { this.frozen = null; t.restart(now); } break;
+      case 'restart': if (t) { this.scrub = null; this.frozen = null; t.restart(now); } break;
       // the song's end: again from its start, playing
-      case 'again': if (t) { this.frozen = null; t.restart(now); t.play(now); this.endSeen = false; } break;
+      case 'again': if (t) { this.scrub = null; this.frozen = null; t.restart(now); t.play(now); this.endSeen = false; } break;
       case 'speed':
         if (arg === undefined) { if (t) this.setSpeed(SPEEDS[(SPEEDS.indexOf(t.speed) + 1) % SPEEDS.length], now); } else this.setSpeed(Number(arg) / 100, now);
         break;
@@ -905,11 +1000,11 @@ export class App {
           this.panelMode = 'warmup';
           loading = this.playStep();
         } else if (arg === 'repeat') {
-          if (x.phase === 'play') { if (t && this.song && this.song.warmup) { this.frozen = null; t.restart(now); t.play(now); this.endSeen = false; } break; }
+          if (x.phase === 'play') { if (t && this.song && this.song.warmup) { this.scrub = null; this.frozen = null; t.restart(now); t.play(now); this.endSeen = false; } break; }
           if (x.repeat()) { this.panelMode = 'warmup'; loading = this.playStep(); }
         } else if (arg === 'skip') {
           if (x.onSong) break;
-          if (x.phase === 'play' && t) t.pause(now);
+          if (x.phase === 'play' && t) { this.scrub = null; t.pause(now); }
           x.skip();
           this.panelMode = 'session';
         } else if (arg === 'exit') {
@@ -1057,7 +1152,7 @@ export class App {
     const layout = this.panelLayout();
     return {
       mode, section: PAGES.includes(this.panelMode) ? this.panelMode : null, layout,
-      playing: !!(t && t.playing && this.frozen === null), speed: t ? t.speed : 1,
+      playing: this.playing(), speed: t ? t.speed : 1,
       loop: t ? t.loop : null, hands: this.handsShown(), lines: this.panelLines(now), pressed: this.pressed, status: this.statusLine(),
       song: entry && this.song ? {
         file: entry.file, title: entry.title || entry.file, composer: entry.composer || '',
@@ -1169,7 +1264,7 @@ export class App {
     if (fingers) return { title: fingers };
     const kind = xr ? xr.kind : this.previewInput;
     // controllers in hand while the song plays: the keys want hands (at a pause they press the panel)
-    const playing = !!(this.transport && this.transport.playing && this.frozen === null);
+    const playing = this.playing();
     if (kind === 'controllers' && playing && (!xr || xr.guideState() === 'play')) return { title: 'Бачу контролери: поклади їх', sub: 'грати треба руками' };
     if (kind === 'none' && xr) return { title: 'Не бачу ні рук, ні контролерів' };
     return null;
@@ -1273,6 +1368,7 @@ export class App {
     for (const k of Object.keys(b)) if (k !== 'marks') b[k].clear();
     if (fake) buildFakeKeyboard(b.fake, WHITE_PITCH); // the real keyboard keeps its own pitch
     this.estimateNext();
+    if (this.scrub && this.scrub.by === 'wheel' && now >= this.scrub.until) this.scrubEnd(null, now);
     this.watchEnd(now);
     this.sound.tick(this.soundView());
     // While calibrating the keys are outlines alone, faint, with the key to touch: no song over them.
@@ -1382,6 +1478,7 @@ export class App {
     const panel = multiply(keyboard, panelInKeyboard(this.panelMode));
     const mid = (WHITE_COUNT * pitch) / 2;
     const items = this.items(keyboard, panel, keyboard);
+    const eyes = [];
     if (seat) {
       // A seated player: eyes 45 cm over the keys and 38 cm in front of the touch line, a little
       // left of the middle, so both eyes see the panel beside the lowest C whole.
@@ -1392,12 +1489,15 @@ export class App {
         const view = lookAt([eye[0] + dx, eye[1], eye[2]], [target[0] + dx, target[1], target[2]]);
         this.renderer.draw(proj, view, items);
         if (i === 0) this.panelText = panelTextPx(proj, view, panel, this.panelMode, h / dpr);
+        eyes.push({ proj, view, x: (i * w) / 2 / dpr, w: w / 2 / dpr });
       }
     } else {
       const { proj, view } = frontCamera(this.panelMode, pitch, w / h);
       this.renderer.draw(proj, view, items);
       this.panelText = panelTextPx(proj, view, panel, this.panelMode, h / dpr);
+      eyes.push({ proj, view, x: 0, w: w / dpr });
     }
+    this.eyes = eyes;
   }
 }
 
@@ -1583,6 +1683,16 @@ export async function main() {
   for (const v of document.querySelectorAll('[data-view]')) {
     v.addEventListener('click', () => { app.view = v.dataset.view; });
   }
+  // The waterfall taken by the mouse (left button) or wheeled; elsewhere the page scrolls as ever.
+  const at = e => { const r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  canvas.addEventListener('pointerdown', e => {
+    if (e.button !== 0 || !app.mouseDown(...at(e))) return;
+    canvas.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+  canvas.addEventListener('pointermove', e => app.mouseMove(...at(e)));
+  for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) canvas.addEventListener(type, () => app.mouseUp());
+  canvas.addEventListener('wheel', e => { if (app.wheel(...at(e), e.deltaY, e.deltaMode)) e.preventDefault(); }, { passive: false });
   await app.init();
   refresh();
   refreshPicks();

@@ -90,6 +90,8 @@ export const PREROLL_SPARE = 0.25;
 // (docs/piano-audio-design.md §3.3, §4.3).
 export const COUNT_IN_MAX = 12;
 export const START_GAP = 0.8;
+// A seek with an A–B loop stops this many song seconds before B (time() folds B itself back).
+export const SEEK_BEFORE_B = 0.001;
 
 // The song clock. Song time runs at `speed` times real time while playing. Every method takes
 // the real time `now` in seconds, so tests drive it without a clock.
@@ -159,6 +161,17 @@ export class Transport {
   }
 
   toggle(now) { if (this.playing) this.pause(now); else this.play(now); }
+
+  // The clock put at song time `time` (a scrub, scrub.js), playing or standing as it was, clamped
+  // to where it can stand: from where restart puts it (the lead-in) to the end, or with an A–B
+  // loop to just before its B, so it is never folded back into the loop. -> the time it stands at.
+  seek(time, now) {
+    const lo = this.startTime();
+    const hi = this.loop && this.loop.b !== undefined ? this.loop.b - SEEK_BEFORE_B : this.endTime;
+    this.anchorSong = Math.max(lo, Math.min(hi, time));
+    this.anchorReal = now;
+    return this.anchorSong;
+  }
 
   // A clock standing at the start of the song moves to the new speed's lead-in.
   setSpeed(speed, now) {

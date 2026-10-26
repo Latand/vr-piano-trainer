@@ -16,6 +16,7 @@ import { guideLines, statusLine } from './guide.js';
 import { rayButton, rayPoint, buttonAt, layout, Poke, panelInKeyboard, panelHeight, panelCovers, pageLayout, WIDTH as PANEL_WIDTH, HEIGHT as PANEL_HEIGHT } from './panel.js';
 import { buildCalibrationMarks } from './overlay.js';
 import { WHITE_PITCH } from './geometry.js';
+import { scrubTime, scrubReach, rayWaterfall, tipWaterfall } from './scrub.js';
 import { multiply, invertRigid, transformPoint, yawQuaternion, translation, add, sub, scale, length, levelPose, tiltOf } from './mat.js';
 
 export const SESSION_INIT = { requiredFeatures: [], optionalFeatures: ['local-floor', 'hand-tracking', 'anchors'] };
@@ -59,6 +60,7 @@ export class XrRun {
     this.lost = false; // the saved anchor was not found: its place is unknown in this session
     this.flow = null; // CalibrationFlow while calibrating
     this.adjust = null; // {entry: the record on entering, slide, drag} in «Підлаштувати»
+    this.scrub = null; // {source, by: tip | ray, y, history} while a trigger holds the waterfall (App.scrubBegin)
     this.sticks = new StickNudger();
     this.nudging = false; // the sticks moved the keyboard; saved once they rest
     this.notice = '';
@@ -123,6 +125,7 @@ export class XrRun {
     document.body.classList.add('in-xr');
     session.addEventListener('end', () => {
       document.body.classList.remove('in-xr');
+      if (this.scrub) this.cancelScrub();
       app.xr = null;
       if (app.panelMode === 'adjust' || app.panelMode === 'calibrate') leaveMode(app);
       app.changed();
@@ -213,6 +216,7 @@ export class XrRun {
   // neither drawn nor gone back to by «Скасувати». The width is measured from the touches unless
   // it is locked.
   beginCalibration(problem = '') {
+    this.releaseScrub();
     if (this.adjust) {
       // «Підлаштувати» ends with what it moved kept; an unlocked width stays so, to be measured
       if (this.adjust.slide) this.cancelSlide();
@@ -242,6 +246,7 @@ export class XrRun {
   // «Підлаштувати»: only for a keyboard that stands and is not being calibrated or looked for.
   beginAdjust() {
     if (this.adjust || this.flow || !this.placed) return;
+    this.releaseScrub();
     this.adjust = { entry: cloneCal(this.cal), slide: null, drag: null };
     this.sticks.reset();
     this.nudging = false;
@@ -382,6 +387,7 @@ export class XrRun {
     this.presses.clear();
     if (this.adjust && this.adjust.slide) this.cancelSlide();
     if (this.adjust && this.adjust.drag) this.cancelDrag();
+    if (this.scrub) this.cancelScrub();
     this.sticks.reset();
     if (this.nudging) { this.nudging = false; this.save(); }
     this.panelGrab = null;
@@ -549,6 +555,89 @@ export class XrRun {
     this.app.changed();
   }
 
+  // Where a controller's press would take the waterfall (scrub.js): by its tip on the waterfall's
+  // face, else by its ray on the waterfall where the panel's face is not nearer along it; on a
+  // placed keyboard, outside calibrating and «Підлаштувати» (they own the trigger then). -> {by,
+  // y, point (by ray)} or null.
+  waterfallUnder(source, now = null) {
+    if (this.adjust || this.flow || !this.keyboardFrame || !this.cal) return null;
+    const depth = depthOf(this.cal);
+    const h = now !== null && this.controllerTips.get(source);
+    const tip = (h && h.before(now)) || (this.touchTips && this.touchTips.get(source));
+    const byTip = tip && tipWaterfall(this.keyboardFrame, this.pitchNow, depth, tip);
+    if (byTip) return { by: 'tip', y: byTip.y };
+    const m = this.rays.get(source);
+    if (!m) return null;
+    const origin = [m[12], m[13], m[14]], dir = [-m[8], -m[9], -m[10]];
+    const hit = rayWaterfall(this.keyboardFrame, this.pitchNow, depth, origin, dir);
+    if (!hit) return null;
+    if (this.panelMatrix && rayFace(this.panelMatrix, PANEL_WIDTH, panelHeight(this.app.panelMode), origin, dir) < hit.distance) return null;
+    return { by: 'ray', y: hit.y, point: hit.point, distance: hit.distance };
+  }
+
+  // The height the scrub's source holds the waterfall at this frame: its tip's, or where its ray
+  // meets the waterfall's plane within its reach; null while it cannot tell (untracked, the ray
+  // turned away or nearly along the plane).
+  scrubHeight(s) {
+    const depth = depthOf(this.cal);
+    if (s.by === 'tip') {
+      const tip = this.touchTips && this.touchTips.get(s.source);
+      return tip ? tipWaterfall(this.keyboardFrame, this.pitchNow, depth, tip, { bounded: false }).y : null;
+    }
+    const m = this.rays.get(s.source);
+    const hit = m && rayWaterfall(this.keyboardFrame, this.pitchNow, depth, [m[12], m[13], m[14]], [-m[8], -m[9], -m[10]], { bounded: false, reach: s.reach });
+    return hit ? hit.y : null;
+  }
+
+  // A controller's trigger that begins on the waterfall takes the song (App.scrubBegin).
+  scrubStart(source, now) {
+    if (this.scrub || !this.app.scrubBegin) return false;
+    const under = this.waterfallUnder(source, now);
+    if (!under) return false;
+    const from = this.app.scrubBegin(now);
+    if (from === null || from === undefined) return false;
+    this.scrub = { source, by: under.by, y: under.y, from, history: [], reach: under.by === 'ray' ? scrubReach(under.distance) : null };
+    this.app.changed();
+    return true;
+  }
+
+  // The song follows the held waterfall one to one; a frame that cannot tell holds it. The app may
+  // have let it go meanwhile (a new song, «Спочатку»): then the hold ends.
+  advanceScrub(now) {
+    const s = this.scrub;
+    if (!s || !this.keyboardFrame) return;
+    const y = this.scrubHeight(s);
+    if (y === null) return;
+    const at = this.app.scrubTo(scrubTime(s.from, y - s.y), now);
+    if (at === null || at === undefined) { this.scrub = null; return; }
+    s.history.push({ time: now, pose: at });
+    while (s.history.length > 1 && s.history[0].time < now - SLIDE_HISTORY) s.history.shift();
+  }
+
+  // The trigger let go: the song goes on from where it stood RELEASE_BACK before (the release jolts
+  // the controller), as it was, playing or paused.
+  scrubEnd(now) {
+    const s = this.scrub;
+    this.scrub = null;
+    const at = settledPose(s.history, now);
+    this.app.scrubEnd(at === null || at === undefined ? null : at, now);
+  }
+
+  // A scrub that ends without its trigger letting go (the source lost, the session hidden or
+  // ended): the song goes back to where it was taken, as it was.
+  cancelScrub() {
+    const s = this.scrub;
+    this.scrub = null;
+    this.app.scrubEnd(s.from, this.now);
+  }
+
+  // Calibrating or «Підлаштувати» begins while the song is held: it is let go where it stands.
+  releaseScrub() {
+    if (!this.scrub) return;
+    this.scrub = null;
+    if (this.app.scrubEnd) this.app.scrubEnd(null, this.now);
+  }
+
   // The thumbsticks, in «Підлаштувати» while nothing slides. Once they rest the nudge is saved.
   nudgeBySticks(now, dt) {
     if (!this.adjust || this.adjust.slide || this.adjust.drag || !this.cal) return;
@@ -704,8 +793,10 @@ export class XrRun {
     const drag = this.adjust && this.adjust.drag;
     if (drag && drag.grabs.some(g => presses.lost.includes(g.source))) this.cancelDrag();
     if (this.panelGrab && presses.lost.includes(this.panelGrab.source)) this.panelGrab = null;
+    if (this.scrub && presses.lost.includes(this.scrub.source)) this.cancelScrub();
     for (const s of presses.ended) {
       if (this.panelGrab && this.panelGrab.source === s) this.panelGrab = null;
+      if (this.scrub && this.scrub.source === s) this.scrubEnd(now);
       if (this.adjust && this.adjust.slide && this.adjust.slide.source === s) this.slideEnd(now);
       if (this.adjust && this.adjust.drag && this.adjust.drag.grabs.some(g => g.source === s)) this.dragEnd(s, now);
     }
@@ -758,7 +849,8 @@ export class XrRun {
 
     // Presses that began: the panel's bar, a panel button by ray, else (in «Підлаштувати») a
     // handle by tip or ray (trigger or grip), else the keyboard by ray (trigger), else
-    // (calibrating) a controller's touch on the key.
+    // (calibrating) a controller's touch on the key, else (playing) the waterfall by tip or ray
+    // (trigger): a scrub.
     const started = presses.started.filter(source => !this.panelGrabStart(source, now));
     const fired = this.handleInput(this.panelMatrix, started);
     this.aimNow = this.aimAt(this.panelMatrix);
@@ -768,7 +860,9 @@ export class XrRun {
     // the trigger slides and touches
     const free = pressed.filter(s => !taken.has(s) && this.pads.get(s).trigger);
     if (visible && this.adjust) for (const s of free) if (this.slideStart(s, now)) break;
+    if (visible) for (const s of free) if (this.scrubStart(s, now)) break;
     if (visible) {
+      this.advanceScrub(now);
       this.advanceSlide(base, now);
       this.advanceDrag(base, now);
       this.nudgeBySticks(now, dt);
@@ -844,6 +938,14 @@ export class XrRun {
         hover = true;
         continue;
       }
+      // a ray on the waterfall ends there; the one holding it (a scrub) ends where it holds it,
+      // with its dot, as far out as the hold counts (scrubHeight)
+      if (this.scrub && this.scrub.source === source && this.scrub.by === 'ray' && this.keyboardFrame) {
+        const at = rayWaterfall(this.keyboardFrame, this.pitchNow, depthOf(this.cal), from, dir, { bounded: false, reach: this.scrub.reach });
+        if (at) { rays.push({ from, to: at.point, hit: true }); continue; }
+      }
+      const fall = !this.scrub || this.scrub.source !== source ? this.waterfallUnder(source) : null;
+      if (fall && fall.by === 'ray') { rays.push({ from, to: fall.point, hit: false }); continue; }
       const hit = this.adjust && this.keyboardFrame ? rayKeyboard(this.keyboardFrame, this.pitchNow, from, dir, depthOf(this.cal)) : null;
       const on = !!hit && hit.distance <= panel;
       const reach = on ? hit.distance : Math.min(panel, RAY_LENGTH);

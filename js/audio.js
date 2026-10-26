@@ -245,10 +245,11 @@ export class Sound {
         sound.voice(h, when);
         return h;
       },
-      // not started: it never plays
+      // not started: it never plays, nor counts among the sounding notes
       cancel(h) {
         try { h.src.stop(0); } catch { /* stopped */ }
         try { h.src.disconnect(); } catch { /* gone */ }
+        if (sound.voices.includes(h)) sound.voices = sound.voices.filter(v => v !== h);
       },
       // sounding: a short fade from `at`
       release(h, at) { sound.fade(h, at, RELEASE_STOP); },
