@@ -81,11 +81,12 @@ export class SongGrab {
 
   to(time, now) { return this.transport.seek(time, now); }
 
-  // Let go at `time` (null: where it stands): a song that played plays on from there; one let go
-  // at its end stands there ended, as one played to its end does, and is not started again.
-  end(time, now) {
+  // Let go at `time` (null: where it stands): a song that played plays on from there, after
+  // `hold` (Transport.play); one let go at its end stands there ended, as one played to its end
+  // does, and is not started again.
+  end(time, now, hold = 0) {
     const t = this.transport;
     if (time !== null && time !== undefined) t.seek(time, now);
-    if (this.playing && !t.ended(now)) t.play(now);
+    if (this.playing && !t.ended(now)) t.play(now, hold);
   }
 }

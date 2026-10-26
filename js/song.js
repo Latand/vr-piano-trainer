@@ -126,8 +126,9 @@ export class Transport {
 
   get endTime() { return this.song.end + 1; }
 
+  // Before anchorReal (a play's hold) the clock stands at anchorSong.
   time(now) {
-    let t = this.anchorSong + (this.playing ? (now - this.anchorReal) * this.speed : 0);
+    let t = this.anchorSong + (this.playing ? Math.max(0, now - this.anchorReal) * this.speed : 0);
     if (this.loop && this.loop.b !== undefined && t >= this.loop.b) {
       const from = this.loopFrom();
       t = from + ((t - this.loop.b) % (this.loop.b - from));
@@ -149,9 +150,12 @@ export class Transport {
     this.anchorReal = now;
   }
 
-  play(now) {
+  // hold: real s the clock stands before it moves (the sound's lead, audio.js Sound.lead), so the
+  // notes due right after a resume are heard where it puts them.
+  play(now, hold = 0) {
     if (this.ended(now)) this.restart(now);
     this.rebase(now);
+    this.anchorReal = now + hold;
     this.playing = true;
   }
 
@@ -206,6 +210,7 @@ export class Transport {
   // when the interval ends at a wrap, else null. Nothing when the clock stands.
   spans(r0, r1) {
     const out = [];
+    r0 = Math.max(r0, this.anchorReal); // nothing plays in a hold
     if (!this.playing || !(r1 > r0)) return out;
     let r = r0, t = this.time(r0);
     for (let guard = 0; guard < 64 && r < r1 && t < this.endTime; guard++) {

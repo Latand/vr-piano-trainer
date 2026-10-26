@@ -692,6 +692,7 @@ export class App {
     const playing = this.playing();
     if (this.frozen !== null) { t.seek(this.frozen, now); this.frozen = null; }
     this.scrub = Object.assign(new SongGrab(t, now, playing), { by });
+    this.soundNow(); // what sounds fades from the press itself
     this.changed();
     return this.scrub.from;
   }
@@ -709,7 +710,8 @@ export class App {
     const g = this.scrub;
     if (!g) return;
     this.scrub = null;
-    if (g.transport === this.transport) g.end(time, now);
+    if (g.transport === this.transport) g.end(time, now, this.soundLead());
+    this.soundNow();
     this.changed();
   }
 
@@ -844,6 +846,14 @@ export class App {
     return clicks || notes ? { transport: this.transport, clicks, notes } : null;
   }
 
+  // A change made by the player's input reaches the sound at once, inside that input (audio.js
+  // Sound.tick): the next frame can come late.
+  soundNow() { this.sound.tick(this.soundView()); }
+
+  // Real s the clock stands when it starts again (a resume, a scrub let go), so that its first
+  // notes are heard where it puts them (audio.js Sound.lead); 0 while nothing may sound.
+  soundLead() { return this.soundView() ? this.sound.lead() : 0; }
+
   // The sound for the panel: the door on the playing pages, and the «Звук» page.
   soundState() {
     const s = this.soundSettings();
@@ -878,7 +888,7 @@ export class App {
         if (t && this.scrub) { this.scrub.playing = !this.scrub.playing; break; }
         if (t) {
           if (this.frozen !== null) { t.anchorSong = this.frozen; this.frozen = null; }
-          t.toggle(now);
+          if (t.playing) t.pause(now); else t.play(now, this.soundLead());
           if (t.playing) this.fingerSeen = this.song; // «Без пальців» was read
         }
         break;
@@ -1034,6 +1044,7 @@ export class App {
       case 'screens': loading = this.back.run(); break;
       default: if (this.xr) this.xr.command(id); break;
     }
+    this.soundNow();
     this.changed();
     return loading;
   }

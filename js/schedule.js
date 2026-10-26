@@ -21,6 +21,11 @@ export const CLOCK_RING = 16; // output stamps the mapping's median is taken ove
 // output stamps after the context's start, another device), what is not started is placed again.
 export const REPLACE_SHIFT = 0.004;
 export const STATS_RING = 256; // the last events kept for the browser smoke
+// A clock started again (a resume, a scrub let go) stands first for what the context renders
+// ahead of what is heard, and this more, so its first onsets can still be heard on it; at most
+// RESUME_MAX (s).
+export const RESUME_SPARE = 0.01;
+export const RESUME_MAX = 0.5;
 const FRESH_BACK = 0.1; // a fresh play schedules from its press, at most this far back
 // A change that moves the song time by more than this (song s; a loop's B set folds it back to the
 // loop's start) lets nothing ring on; a speed or level change, seen a frame after it was made,
@@ -142,6 +147,20 @@ export class Scheduler {
       this.until = to;
     }
     this.prune(cur);
+  }
+
+  // How far ahead of what is heard the context renders now (s), by the mapping as it stands; null
+  // before the mapping has a stamp or a guess.
+  latency(now) {
+    return this.map.ring.length ? this.port.currentTime - this.map.ctxAt(now) : null;
+  }
+
+  // Real s a clock that starts moving now should stand first (Transport.play's hold): an onset
+  // due sooner than the context's latency could not be heard on time, and would be late or
+  // dropped. 0 without a mapping.
+  lead(now) {
+    const l = this.latency(now);
+    return l === null ? 0 : Math.min(RESUME_MAX, Math.max(0, l) + RESUME_SPARE);
   }
 
   // The mapping moved: every event not started that the new mapping can still place in time is

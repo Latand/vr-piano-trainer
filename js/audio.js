@@ -273,7 +273,16 @@ export class Sound {
     while (this.voices.length > VOICES) this.fade(this.voices.shift(), Math.max(cur, when), 0.02);
   }
 
-  // Each frame. view: schedule.js Scheduler.tick's (null: nothing may sound).
+  // Real s a clock started again now should stand first, so that what it plays first is heard on
+  // it (schedule.js Scheduler.lead); 0 while nothing renders.
+  lead() {
+    if (!this.ctx || this.halted || this.ctx.state !== 'running' || !this.on()) return 0;
+    return this.scheduler.lead(this.now());
+  }
+
+  // Each frame, and inside a user's action that changes what sounds (App.soundNow), so a frame
+  // that comes late neither lets a held song ring on nor makes a resume's first onsets late.
+  // view: schedule.js Scheduler.tick's (null: nothing may sound).
   tick(view) {
     if (!this.ctx) return;
     const s = this.settings();
